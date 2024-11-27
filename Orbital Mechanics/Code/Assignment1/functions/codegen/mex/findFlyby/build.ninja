@@ -1,0 +1,60 @@
+# CompilerName=mingw64
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/win64
+matlabdir = C:/Program Files/MATLAB/R2023b
+startdir = C:/Users/tomis/OneDrive/Documentos/GitHub/omProject/Assignment1/functions
+
+# Toolchain information
+cc = C:\ProgramData\MATLAB\SupportPackages\R2023b\3P.instrset\mingw_w64.instrset\bin\gcc
+cxx = C:\ProgramData\MATLAB\SupportPackages\R2023b\3P.instrset\mingw_w64.instrset\bin\g++
+linker = C:\ProgramData\MATLAB\SupportPackages\R2023b\3P.instrset\mingw_w64.instrset\bin\gcc
+linkerxx = C:\ProgramData\MATLAB\SupportPackages\R2023b\3P.instrset\mingw_w64.instrset\bin\g++
+
+cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions\codegen\mex\findFlyby" -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions" -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions\codegen\mex\findFlyby\interface" -I "C:\Program Files\MATLAB\R2023b\extern\include" -I "." -DMODEL=findFlyby_mex -D__USE_MINGW_ANSI_STDIO=1 -DMW_NEEDS_VERSION_H -msse2 -fopenmp 
+
+cxxflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions\codegen\mex\findFlyby" -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions" -I "C:\Users\tomis\OneDrive\Documentos\GitHub\omProject\Assignment1\functions\codegen\mex\findFlyby\interface" -I "C:\Program Files\MATLAB\R2023b\extern\include" -I "." -DMODEL=findFlyby_mex -D__USE_MINGW_ANSI_STDIO=1 -DMW_NEEDS_VERSION_H -msse2 -fopenmp 
+
+ldflags =  -m64 -Wl,--no-undefined -shared -static -L"C:\Program Files\MATLAB\R2023b\extern\lib\win64\mingw64" -llibmx -llibmex -llibmat -lm -llibmwlapack -llibmwblas -llibMatlabDataArray -llibMatlabEngine  -o "findFlyby_mex.mexw64" -L"$matlabdir\extern\lib\win64\mingw64" -llibmwblas -llibemlrt -llibcovrt -llibut -llibmwmathutil -fopenmp
+
+linkobjs = 
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker @$out.rsp $linkobjs $ldflags
+    rspfile = $out.rsp
+    rspfile_content = $in
+
+rule linkxx
+    command = $linkerxx $in $linkobjs $ldflags
+
+# Build
+build $builddir/findFlyby_data.o : cxx $root/findFlyby_data.cpp
+build $builddir/rt_nonfinite.o : cxx $root/rt_nonfinite.cpp
+build $builddir/findFlyby_initialize.o : cxx $root/findFlyby_initialize.cpp
+build $builddir/findFlyby_terminate.o : cxx $root/findFlyby_terminate.cpp
+build $builddir/findFlyby.o : cxx $root/findFlyby.cpp
+build $builddir/date2jd.o : cxx $root/date2jd.cpp
+build $builddir/uplanet.o : cxx $root/uplanet.cpp
+build $builddir/orbitalToCar.o : cxx $root/orbitalToCar.cpp
+build $builddir/lambertMR.o : cxx $root/lambertMR.cpp
+build $builddir/dot.o : cxx $root/dot.cpp
+build $builddir/norm.o : cxx $root/norm.cpp
+build $builddir/ephNEO.o : cxx $root/ephNEO.cpp
+build $builddir/fzero.o : cxx $root/fzero.cpp
+build $builddir/_coder_findFlyby_api.o : cxx $root/interface/_coder_findFlyby_api.cpp
+build $builddir/_coder_findFlyby_mex.o : cxx $root/interface/_coder_findFlyby_mex.cpp
+build $builddir/_coder_findFlyby_info.o : cxx $root/interface/_coder_findFlyby_info.cpp
+build $builddir/cpp_mexapi_version.o : cxx $matlabdir/extern/version/cpp_mexapi_version.cpp
+
+# Link
+build $root\findFlyby_mex.mexw64 : linkxx $builddir/findFlyby_data.o $builddir/rt_nonfinite.o $builddir/findFlyby_initialize.o $builddir/findFlyby_terminate.o $builddir/findFlyby.o $builddir/date2jd.o $builddir/uplanet.o $builddir/orbitalToCar.o $builddir/lambertMR.o $builddir/dot.o $builddir/norm.o $builddir/ephNEO.o $builddir/fzero.o $builddir/_coder_findFlyby_api.o $builddir/_coder_findFlyby_mex.o $builddir/_coder_findFlyby_info.o $builddir/cpp_mexapi_version.o 
