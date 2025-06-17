@@ -61,9 +61,11 @@ wE = [0; 0; omegaE];
 
 %% SECOND HARMONIC 
 
-vec = [x/rnorm*(5*(z^2)/(rnorm^2)-1); y/rnorm*(5*(z^2)/(rnorm^2)-1); z/rnorm*(5*(z^2)/(rnorm^2)-3)];
+% vec = [x/rnorm*(5*(z^2)/(rnorm^2)-1); y/rnorm*(5*(z^2)/(rnorm^2)-1); z/rnorm*(5*(z^2)/(rnorm^2)-3)];
+% 
+% aJ2 = 3/2*J2*mu*(Re^2)/(rnorm^4)*vec;
 
-aJ2 = 3/2*J2*mu*(Re^2)/(rnorm^4)*vec;
+aJ2 =
 
 %% AIR DRAG
 
