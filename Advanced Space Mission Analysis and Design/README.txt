@@ -4,6 +4,6 @@ The objective was to design an Earth Observation constellation in VLEO with mini
 
 In particular I worked on the launchers selection, the propulsion subsystems and the assembly, integration, testing, and validation of the spacecraft.
 
-This project has been submitted to IAC 2025 as two separate papers, one on the control algorithm and mission orbital design while the other highlighted the whole mission and all other subsystems. The latter was accepted to be presented in front of a congress and the first was accepted as a backup paper for IAC.
+This project has been submitted to IAC 2025 as two separate papers, one on the control algorithm and mission orbital design while the other highlighted the whole mission and all other subsystems. The latter was accepted to be presented in front of a congress and the first was accepted as a backup paper for IAC. In the IAC 2025 folder all the documentation used to present at IAC has been uploaded.
 
 
