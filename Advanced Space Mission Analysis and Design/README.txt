@@ -6,4 +6,8 @@ In particular I worked on the launchers selection, the propulsion subsystems and
 
 This project has been submitted to IAC 2025 as two separate papers, one on the control algorithm and mission orbital design while the other highlighted the whole mission and all other subsystems. The latter was accepted to be presented in front of a congress and the first was accepted as a backup paper for IAC. In the IAC 2025 folder all the documentation used to present at IAC has been uploaded.
 
+HORUS: A High-Resolution Earth Observation Mission in Very Low Earth Orbit
+https://doi.org/10.52202/083084-0036
 
+High-Resolution Imaging in Vleo: Preliminary Mission Analysis and Gnc Design for the Horus Mission
+https://doi.org/10.52202/083087-0122
